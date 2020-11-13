@@ -1,0 +1,41 @@
+// standard header files
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// created header files
+#include "extended_io.h"
+
+void * xmalloc(size_t size)
+{
+    void * data = malloc(size);
+    
+    // if the requested data is not given in other words returned NULL exit
+    if(data == NULL)
+    {
+        fprintf(stderr, "virtual memory exhausted");
+        exit(-1);
+    }
+    
+    // return the data variable
+    return data;
+}
+
+void * xrealloc(void * ptr, size_t size)
+{
+    void * data = realloc(ptr, size);
+    
+    // if the requested data is not given in other words returned NULL exit
+    if(data == NULL)
+    {
+        fprintf(stderr, "virtual memory exhausted");
+        exit(-1);
+    }
+
+    // return the data variable
+    return data;
+}
+
+char * read_variable_string_from_stdin(void)
+{
+    // varaible to hold the size of string
